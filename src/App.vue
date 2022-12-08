@@ -1,6 +1,9 @@
 <template>
   <div class="app">
-    <h1 align="center">Hello New Project</h1>
+    <h2 align="left">Name : {{ firstName }}</h2>
+    <h2 align="left">Lastname : {{ lastName }}</h2>
+    <h2 align="left">age : {{ age }}</h2>
+    <p>Address : <span v-html="address"></span></p>
   </div>
 </template>
 
@@ -13,9 +16,8 @@ export default {
       lastName: 'Samang',
       age: 25,
       weigh: 130.5,
+      address: '<strong>Bangkok</strong>',
     };
   },
 };
 </script>
-
-
