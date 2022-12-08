@@ -7,11 +7,18 @@
     <p>
       Facebook Link : <a v-bind:href="socialURL" target="_blank">Facebook</a>
     </p>
-    <p>Hobby : </p>
+    <p>Hobby :</p>
     <ul>
       <li>{{ hobby[0] }}</li>
       <li>{{ hobby[1] }}</li>
       <li>{{ hobby[2] }}</li>
+    </ul>
+    <p>Personal Imformation :</p>
+    <ul>
+      <li>Gender: {{ generalInformation.gender }}</li>
+      <li>Weight: {{ generalInformation.weight }}</li>
+      <li>Height: {{ generalInformation.height }}</li>
+      <li>isMarried: {{ generalInformation.isMarried }}</li>
     </ul>
   </div>
 </template>
@@ -30,6 +37,12 @@ export default {
       size: 150,
       socialURL: 'https://www.facebook.com/hasanbasori.sa',
       hobby: ['read a book', 'play a game', 'listen music'],
+      generalInformation: {
+        gender: 'male',
+        weight: 85,
+        height: 175,
+        isMarried: false,
+      },
     };
   },
   methods: {
