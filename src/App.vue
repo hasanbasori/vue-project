@@ -1,7 +1,10 @@
 <template>
   <div class="app">
-    <img v-bind:src="picture" v-bind:width="size" :height="size" />
+    <img v-bind:src="picture" v-bind:width="size" :height="size" /><br />
+    Please tell your nickname : <input type="text" v-on:input="setNickName" />
     <h2 align="left">Full name : {{ getFullName() }}</h2>
+    <h2 align="left">Nickname : {{ nickName }}</h2>
+
     <h2 align="left">
       age :<button @click="increment(1)">+</button> {{ age }} yeas old
       <button @click="decrement(1)">-</button>
@@ -39,6 +42,7 @@ export default {
     return {
       firstName: 'Bearsore',
       lastName: 'Cafe',
+      nickName: '',
       age: 25,
       weigh: 130.5,
       address: '<strong>Bangkok</strong>',
@@ -69,6 +73,9 @@ export default {
     },
     decrement(value) {
       this.age -= value;
+    },
+    setNickName(event) {
+      console.log((this.nickName = event.target.value));
     },
   },
 };
