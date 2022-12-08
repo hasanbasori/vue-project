@@ -1,7 +1,6 @@
 <template>
   <div class="app">
-    <h2 align="left">Name : {{ firstName }}</h2>
-    <h2 align="left">Lastname : {{ lastName }}</h2>
+    <h2 align="left">Full name : {{ getFullName() }}</h2>
     <h2 align="left">age : {{ age }}</h2>
     <p>Address : <span v-html="address"></span></p>
   </div>
@@ -12,12 +11,17 @@ export default {
   name: 'App',
   data() {
     return {
-      firstName: 'Hasanbasori',
-      lastName: 'Samang',
+      firstName: 'Bearsore',
+      lastName: 'Cafe',
       age: 25,
       weigh: 130.5,
       address: '<strong>Bangkok</strong>',
     };
+  },
+  methods: {
+    getFullName() {
+      return `${this.firstName + " " + this.lastName}`
+    },
   },
 };
 </script>
