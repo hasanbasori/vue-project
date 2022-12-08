@@ -2,7 +2,10 @@
   <div class="app">
     <img v-bind:src="picture" v-bind:width="size" :height="size" />
     <h2 align="left">Full name : {{ getFullName() }}</h2>
-    <h2 align="left">age : {{ age }}</h2>
+    <h2 align="left">
+      age :<button @click="increment(1)">+</button> {{ age }} yeas old
+      <button @click="decrement(1)">-</button>
+    </h2>
     <p>Address : <span v-html="address"></span></p>
     <p>
       Facebook Link : <a v-bind:href="socialURL" target="_blank">Facebook</a>
@@ -13,17 +16,19 @@
       <li>{{ hobby[1] }}</li>
       <li>{{ hobby[2] }}</li>
     </ul>
-    <p>Personal Imformation :</p>
+    <p>Personal Information :</p>
     <ul>
       <li>Gender: {{ generalInformation.gender }}</li>
       <li>Weight: {{ generalInformation.weight }}</li>
       <li>Height: {{ generalInformation.height }}</li>
       <li>isMarried: {{ generalInformation.isMarried }}</li>
+      <li>
+        Telephone Number :
+        <a href="/" @click="showData()">Click to view telephone number</a>
+      </li>
     </ul>
     <!-- v-on:click สามารถย่อดดยการใช้เครื่องหมาย @ ตัวอย่างเช่น @click -->
     <button v-on:click="showData">Telephone Number</button>
-    <button @click="increment()">+</button>
-    <button @click="decrement">-</button>
   </div>
 </template>
 
@@ -59,11 +64,11 @@ export default {
         `เบอร์โทรศัพท์ของคุณ ${this.firstName} คือ ${this.generalInformation.telephoneNumber}`
       );
     },
-    increment() {
-      this.age++;
+    increment(value) {
+      this.age += value;
     },
-    decrement() {
-      this.age--;
+    decrement(value) {
+      this.age -= value;
     },
   },
 };
