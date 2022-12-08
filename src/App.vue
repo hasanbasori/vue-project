@@ -20,6 +20,10 @@
       <li>Height: {{ generalInformation.height }}</li>
       <li>isMarried: {{ generalInformation.isMarried }}</li>
     </ul>
+    <!-- v-on:click สามารถย่อดดยการใช้เครื่องหมาย @ ตัวอย่างเช่น @click -->
+    <button v-on:click="showData">Telephone Number</button>
+    <button @click="increment()">+</button>
+    <button @click="decrement">-</button>
   </div>
 </template>
 
@@ -42,12 +46,24 @@ export default {
         weight: 85,
         height: 175,
         isMarried: false,
+        telephoneNumber: '0967073404',
       },
     };
   },
   methods: {
     getFullName() {
       return `${this.firstName + ' ' + this.lastName}`;
+    },
+    showData() {
+      alert(
+        `เบอร์โทรศัพท์ของคุณ ${this.firstName} คือ ${this.generalInformation.telephoneNumber}`
+      );
+    },
+    increment() {
+      this.age++;
+    },
+    decrement() {
+      this.age--;
     },
   },
 };
