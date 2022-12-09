@@ -1,10 +1,15 @@
 <template>
   <div class="app">
-    <img v-bind:src="picture" v-bind:width="size" :height="size" /><br />
+    <img
+      v-bind:src="picture"
+      v-bind:width="size"
+      :height="size"
+      ref="imageURL"
+    /><br />
 
     <form @submit.prevent="submitForm">
       <label for="name">Enter your Nickname</label>
-      <input type="text" v-on:input="setNickName" />
+      <input type="text" ref="nicknameElement" />
       <button type="submit">Save</button>
     </form>
     <h2 align="left">Full name : {{ getFullName() }}</h2>
@@ -12,7 +17,7 @@
 
     <h2 align="left">
       age :<button @click="increment(1)">+</button> {{ age }} yeas old
-      <!-- event ของการclick -->
+      <!-- event ของการclick  -->
       <button @click.right="decrement(1)">-</button>
     </h2>
     <p>Address : <span v-html="address"></span></p>
@@ -80,11 +85,9 @@ export default {
     decrement(value) {
       this.age -= value;
     },
-    setNickName(event) {
-      console.log((this.nickName = event.target.value));
-    },
+
     submitForm() {
-      alert('Already set your Nickname');
+      this.nickName = this.$refs.nicknameElement.value;
     },
   },
 };
