@@ -1,13 +1,19 @@
 <template>
   <div class="app">
     <img v-bind:src="picture" v-bind:width="size" :height="size" /><br />
-    Please tell your nickname : <input type="text" v-on:input="setNickName" />
+
+    <form @submit.prevent="submitForm">
+      <label for="name">Enter your Nickname</label>
+      <input type="text" v-on:input="setNickName" />
+      <button type="submit">Save</button>
+    </form>
     <h2 align="left">Full name : {{ getFullName() }}</h2>
     <h2 align="left">Nickname : {{ nickName }}</h2>
 
     <h2 align="left">
       age :<button @click="increment(1)">+</button> {{ age }} yeas old
-      <button @click="decrement(1)">-</button>
+      <!-- event ของการclick -->
+      <button @click.right="decrement(1)">-</button>
     </h2>
     <p>Address : <span v-html="address"></span></p>
     <p>
@@ -76,6 +82,9 @@ export default {
     },
     setNickName(event) {
       console.log((this.nickName = event.target.value));
+    },
+    submitForm() {
+      alert('Already set your Nickname');
     },
   },
 };
