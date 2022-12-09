@@ -18,9 +18,7 @@
     <div v-else>
       <p>Hobby :</p>
       <ul>
-        <li>{{ hobby[0] }}</li>
-        <li>{{ hobby[1] }}</li>
-        <li>{{ hobby[2] }}</li>
+        <li v-for="(item, index) in hobby" :key="index">{{ item }}</li>
       </ul>
     </div>
     <p>Personal Information :</p>
@@ -47,7 +45,15 @@ export default {
       picture: 'https://cdn-icons-png.flaticon.com/512/1077/1077114.png',
       size: 150,
       socialURL: 'https://www.facebook.com/hasanbasori.sa',
-      hobby: ['read a book', 'play a game', 'listen music'],
+      hobby: [
+        'read a book',
+        'play a game',
+        'listen music',
+        'social media',
+        'fitness',
+        'outdoor exercise',
+        
+      ],
       generalInformation: {
         gender: 'male',
         weight: 85,
