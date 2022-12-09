@@ -7,42 +7,29 @@
       ref="imageURL"
     /><br />
 
-    <form @submit.prevent="submitForm">
-      <label for="name">Enter your Nickname</label>
-      <input type="text" ref="nicknameElement" />
-      <button type="submit">Save</button>
-    </form>
     <h2 align="left">Full name : {{ getFullName() }}</h2>
-    <h2 align="left">Nickname : {{ nickName }}</h2>
 
-    <h2 align="left">
-      age :<button @click="increment(1)">+</button> {{ age }} yeas old
-      <!-- event ของการclick  -->
-      <button @click.right="decrement(1)">-</button>
-    </h2>
+    <h2 align="left"></h2>
     <p>Address : <span v-html="address"></span></p>
     <p>
       Facebook Link : <a v-bind:href="socialURL" target="_blank">Facebook</a>
     </p>
-    <p>Hobby :</p>
-    <ul>
-      <li>{{ hobby[0] }}</li>
-      <li>{{ hobby[1] }}</li>
-      <li>{{ hobby[2] }}</li>
-    </ul>
+    <p v-if="hobby.length === 0">No any hobby</p>
+    <div v-else>
+      <p>Hobby :</p>
+      <ul>
+        <li>{{ hobby[0] }}</li>
+        <li>{{ hobby[1] }}</li>
+        <li>{{ hobby[2] }}</li>
+      </ul>
+    </div>
     <p>Personal Information :</p>
     <ul>
       <li>Gender: {{ generalInformation.gender }}</li>
       <li>Weight: {{ generalInformation.weight }}</li>
       <li>Height: {{ generalInformation.height }}</li>
       <li>isMarried: {{ generalInformation.isMarried }}</li>
-      <li>
-        Telephone Number :
-        <a href="/" @click="showData()">Click to view telephone number</a>
-      </li>
     </ul>
-    <!-- v-on:click สามารถย่อดดยการใช้เครื่องหมาย @ ตัวอย่างเช่น @click -->
-    <button v-on:click="showData">Telephone Number</button>
   </div>
 </template>
 
@@ -73,21 +60,6 @@ export default {
   methods: {
     getFullName() {
       return `${this.firstName + ' ' + this.lastName}`;
-    },
-    showData() {
-      alert(
-        `เบอร์โทรศัพท์ของคุณ ${this.firstName} คือ ${this.generalInformation.telephoneNumber}`
-      );
-    },
-    increment(value) {
-      this.age += value;
-    },
-    decrement(value) {
-      this.age -= value;
-    },
-
-    submitForm() {
-      this.nickName = this.$refs.nicknameElement.value;
     },
   },
 };
