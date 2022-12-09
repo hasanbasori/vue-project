@@ -23,10 +23,9 @@
     </div>
     <p>Personal Information :</p>
     <ul>
-      <li>Gender: {{ generalInformation.gender }}</li>
-      <li>Weight: {{ generalInformation.weight }}</li>
-      <li>Height: {{ generalInformation.height }}</li>
-      <li>isMarried: {{ generalInformation.isMarried }}</li>
+      <li v-for="(item, key) in generalInformation" :key="key">
+        {{ key }}: {{ item }}
+      </li>
     </ul>
   </div>
 </template>
@@ -52,7 +51,6 @@ export default {
         'social media',
         'fitness',
         'outdoor exercise',
-        
       ],
       generalInformation: {
         gender: 'male',
