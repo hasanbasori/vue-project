@@ -8,25 +8,31 @@
     /><br />
 
     <h2 align="left">Full name : {{ getFullName() }}</h2>
+    <h2>age : {{ age }}</h2>
 
-    <h2 align="left"></h2>
-    <p>Address : <span v-html="address"></span></p>
-    <p>
-      Facebook Link : <a v-bind:href="socialURL" target="_blank">Facebook</a>
-    </p>
-    <p v-if="hobby.length === 0">No any hobby</p>
-    <div v-else>
-      <p>Hobby :</p>
+    {{ isVisible }}
+    <button @click="toggleVisible">
+      {{ isVisible ? 'Hide Information' : 'More Information' }}
+    </button>
+    <article v-show="isVisible">
+      <p>Address : <span v-html="address"></span></p>
+      <p>
+        Facebook Link : <a v-bind:href="socialURL" target="_blank">Facebook</a>
+      </p>
+      <p v-if="hobby.length === 0">No any hobby</p>
+      <div v-else>
+        <p>Hobby :</p>
+        <ul>
+          <li v-for="(item, index) in hobby" :key="index">{{ item }}</li>
+        </ul>
+      </div>
+      <p>Personal Information :</p>
       <ul>
-        <li v-for="(item, index) in hobby" :key="index">{{ item }}</li>
+        <li v-for="(item, key) in generalInformation" :key="key">
+          {{ key }}: {{ item }}
+        </li>
       </ul>
-    </div>
-    <p>Personal Information :</p>
-    <ul>
-      <li v-for="(item, key) in generalInformation" :key="key">
-        {{ key }}: {{ item }}
-      </li>
-    </ul>
+    </article>
   </div>
 </template>
 
@@ -59,11 +65,15 @@ export default {
         isMarried: false,
         telephoneNumber: '0967073404',
       },
+      isVisible: false,
     };
   },
   methods: {
     getFullName() {
       return `${this.firstName + ' ' + this.lastName}`;
+    },
+    toggleVisible() {
+      this.isVisible = !this.isVisible;
     },
   },
 };
