@@ -7,10 +7,22 @@
       ref="imageURL"
     /><br />
 
-    <h2 align="left">Full name : {{ getFullName() }}</h2>
+    <h2 align="left">Full name : {{ getFullName }}</h2>
     <h2>age : {{ age }}</h2>
+    <h2>Salary (month): {{ salary }} Bath per month</h2>
+    <!-- <h2>Salary (year) : {{ getIncome }} Bath per year</h2> -->
+    <h1>Position : {{ getPosition }}</h1>
 
-    {{ isVisible }}
+    <button @click="addSalary(1000)">Update Salary</button>
+    <h1>Method1 : {{ getRandomByMethod() }}</h1>
+    <h1>Method2 : {{ getRandomByMethod() }}</h1>
+    <hr />
+    <h1>Computed1: {{ getRandomByComputed }}</h1>
+    <h1>Computed2 : {{ getRandomByComputed }}</h1>
+
+    <hr />
+    <h1>getRandomByComputed2: {{ getRandomByComputed2 }}</h1>
+
     <button @click="toggleVisible">
       {{ isVisible ? 'Hide Information' : 'More Information' }}
     </button>
@@ -66,14 +78,37 @@ export default {
         telephoneNumber: '0967073404',
       },
       isVisible: false,
+      salary: 26000,
     };
   },
+
   methods: {
+    toggleVisible() {
+      this.isVisible = !this.isVisible;
+    },
+    getRandomByMethod() {
+      return Math.random();
+    },
+    addSalary(values) {
+      this.salary += values;
+    },
+  },
+  computed: {
     getFullName() {
       return `${this.firstName + ' ' + this.lastName}`;
     },
-    toggleVisible() {
-      this.isVisible = !this.isVisible;
+
+    getRandomByComputed() {
+      return Math.random();
+    },
+    getRandomByComputed2() {
+      return Math.random();
+    },
+    getIncome() {
+      return this.salary * 12;
+    },
+    getPosition() {
+      return this.salary >= 35000 ? 'Project Manager' : 'Programmer';
     },
   },
 };
