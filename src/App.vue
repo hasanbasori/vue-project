@@ -111,5 +111,15 @@ export default {
       return this.salary >= 35000 ? 'Project Manager' : 'Programmer';
     },
   },
+  watch: {
+    salary(value) {
+      if (value > 50000) {
+        alert('salary cannot up to 50000 Bath');
+        setTimeout(() => {
+          this.salary = 20000;
+        }, 2000);
+      }
+    },
+  },
 };
 </script>
