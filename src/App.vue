@@ -1,9 +1,6 @@
 <template>
-  <div><h1>App Component</h1></div>
+  <h1><h1>App Component</h1></h1>
   <FormComponent />
-  <ListData />
-  <ListData />
-  <ListData />
   <ListData />
   <ListData />
   <ListData />
@@ -21,4 +18,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+h1 {
+  background-color: aqua;
+}
+</style>

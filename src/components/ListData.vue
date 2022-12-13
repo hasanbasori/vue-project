@@ -2,9 +2,7 @@
   <div>{{ message }}</div>
   <Person />
   <Person />
-  <Person />
-  <Person />
-  <Person />
+ 
 
 </template>
 
