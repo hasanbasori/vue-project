@@ -1,9 +1,9 @@
 <template>
   <div>{{ message }}</div>
-  <Person />
-  <Person />
- 
-
+  <Person name="sun" salary="16000" />
+  <Person name="abdul" salary="26000" />
+  <Person name="leeLee" salary="36000" />
+  <Person name="same" salary="46000" />
 </template>
 
 <script>
@@ -12,11 +12,6 @@ export default {
   name: 'ListData',
   components: {
     Person,
-  },
-  data() {
-    return {
-      message: 'Company Employee Name',
-    };
   },
 };
 </script>
